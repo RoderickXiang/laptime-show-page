@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.roderick.dao.VehicleDao">
+    <select id="listVehicle" resultType="com.roderick.pojo.Vehicle">
+        select * from vehicle
+    </select>
+    <select id="listVehicleByOrder" resultType="com.roderick.pojo.Vehicle">
+        select * from vehicle order by lap_time
+    </select>
+    <select id="getVehicleById" parameterType="int" resultType="com.roderick.pojo.Vehicle">
+        select * from vehicle where id=#{id}
+    </select>
+    <insert id="insertVehicle" parameterType="com.roderick.pojo.Vehicle">
+        insert  into vehicle (model_name,lap_time,introduction)
+        value (#{model_name},#{lap_time},#{introduction})
+    </insert>
+
+</mapper>

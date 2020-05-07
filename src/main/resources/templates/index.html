@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>纽北圈速展示</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @media screen  and (min-width: 480px) {
+            body {
+                background-image: url("/images/background.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 230%;
+                background-position: 60% 60%;
+            }
+        }
+
+        @media screen and (min-width: 1110px) {
+            body {
+                background-image: url("/images/background.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100%;
+                background-position: 30% 60%;
+            }
+        }
+
+        p {
+            color: snow;
+        }
+
+        .head {
+            color: #3e8f3e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{/index}">介绍<span class="sr-only">(current)</span></a></li>
+                <li><a th:href="@{/lapTime}">圈速详情</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--文章介绍-->
+<div>
+    <h3 class="head">纽伯格林</h3>
+    <p class="col-md-6">纽博格林赛道处于德国境内，在科隆市正南约40英里纽博格（Nurburg）小镇。
+        拥有庞大沙地的纽博格林赛道对车手来说是个不可多得的既快速又安全的赛场。
+        纽博格林包含了全长20.8公里的北赛道（Nordschleife）和全长5.148公里的南赛道（Sudschleife），人们常说的赛车圣地纽博格林即指北赛道。
+    </p>
+    <img src="/images/satyathome.jpg" alt="一位靓仔" class="img-rounded col-md-6">
+</div>
+
+<div>
+    <div id="carousel-example-generic" class="carousel slide col-md-4" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="/images/timg01.jpg" alt="轮播图" style="width: 100%">
+            </div>
+            <div class="item">
+                <img src="/images/timg02.jpg" alt="轮播图" style="width: 100%">
+            </div>
+            <div class="item">
+                <img src="/images/timg03.jpg" alt="轮播图" style="width: 100%">
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="col-md-8">
+        <h3 class="head">北环赛道</h3>
+        <p>
+            纽博格林北环赛道位于德国比利时边界的郊区，为世界上最大的赛车场。
+            赛道横贯在山原丘陵之间，在原始的山林之间任赛车高速地穿梭，赛道随着山势而起伏，宛若云霄飞车一般的比赛过程，所以被人们称之为“绿色地狱”。
+            旧的纽博格林北环赛道原本是德国大奖赛的举办地，是一条非常传统的跑道，有着将近70年的历史，赛道长达22公里超过150个弯道，为世界上最大的赛车场。但是自1976年耐克·劳达在此发生严重撞车意外之后，纽博格林就被排除在F1的赛程之外，而由德国的另一条赛道霍根海姆赛道所取代。
+            现
+            在说的纽博格林一般就是指改建后的新纽博格林的南环赛道，它快慢弯道兼具，车辆的设定颇具难度。可新赛道在举办F1时却遭到了和旧赛道同样的挫折。在1984年第一次举办F1欧洲大奖赛后，1985年纽博格林就因为被众多车手认为比赛过程过于无趣而再度被国际汽联剔除出F1的赛程名单。几经周折后，纽博格林直到1995年才重新回到欧洲站比赛中。
+            纽博格林
+            其实，位于德国漂亮郊区，拥有庞大沙地的纽博格林南环赛道对车手来说是个不可多得的既快速又安全的赛场。它所包含的12个弯道和弧道也令赛事十分刺激，其中尤以可口可乐（CocaCola）弯角和卡斯特S弯（Castrol）最为著名。赛车将会在此饱受转向不足之苦，中级下压力在此是最普遍的选择。因为纽博格林超车的机会不多，所以进站策略也显得比较重要。
+            Nurburgring北环山道（Nurburgring Nordschleife），20.6 km，左弯88个，右弯84个，落差300多米。
+            值得一提的是，每年一段时间内都可以进入赛道随意涂鸦，而涂鸦也成了纽博格林北环的一个标志。
+        </p>
+    </div>
+</div>
+<div>
+    <h3 class="head">圈速时间</h3>
+    <p>
+        纽博格林赛道(Nürburgring)于1927年竣工，是目前全球少数拥有历史地位及技术难度的经典赛车跑道。纽堡林赛道因德国科隆旁的Nürburg小镇而得名，地处德国、比利时、卢森堡三国交界的Eifel丘陵中，造就出众多的传奇。纽堡林北侧赛道（Nurburgring
+        Nordschleife）以“真理之环”闻名世界，是一条难度几近不可思议的高速赛道——在Eifel高原上蜿蜒前进，赛道随着山势起伏，路面的垂直落差高达300米，多达177处的弯道的严苛赛道。1976年前“北环”曾是F1赛事的其中一站，由于赛道长达20.83公里，不仅在电视转播上有技术困难，连最为重要的事故救援也无法实时到达，因此FIA取消了该站比赛。直至1982年，新建的纽堡林GP(南侧)跑道落成后两年才又重新回到F1分站比赛中。
+        “北环”的177个弯道中以高速居多，且路面与缓冲区相当狭小，至多只能容纳两三台车并行。同时部分路肩石突起的角度相当高，万一路线错误导致车轮压到路肩便很容易造成过度弹跳导致失控，因此正确的路线在此显得非常重要。对于车手的技术、体力，车辆的底盘、制动、转向、车身刚性、引擎调校、轮胎抓地力等都是极大的考验。纽北更是全球车厂用作测试高性能车型的最终测试赛道，低于八分钟的圈速时间更被世界车坛公认为“超级跑车”的标准。
+    </p>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/jquery-3.5.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
