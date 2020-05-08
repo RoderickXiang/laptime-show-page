@@ -31,14 +31,13 @@ public class MainController {
         return "lapTime";
     }
 
+    /**
+     * 获取详细的信息
+     * @param id 车辆id
+     */
     @GetMapping("/modelInfo")
     public String modelInfo(@RequestParam("id") int id) {
         System.out.println(id);
         return "vehicle/modelInfo";
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        return "login";
     }
 }
