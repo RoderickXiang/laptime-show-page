@@ -12,6 +12,10 @@ public interface VehicleService {
 
     void setVehicleDao(VehicleDao vehicleDao);
 
+    /**
+     * 按照圈速时间顺序返回结果
+     * @return 车辆列表
+     */
     List<Vehicle> listVehicle();
 
     Vehicle getVehicleById(int id);
