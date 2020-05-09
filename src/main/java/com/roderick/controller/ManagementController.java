@@ -47,11 +47,10 @@ public class ManagementController {
     }
 
     @GetMapping("/management/deleteVehicle")
-    @ResponseBody
-    public String deleteVehicle(@RequestParam int id, Model model){
+    public String deleteVehicle(@RequestParam int id){
         // todo 删除
-        System.out.println(id);
-        return null;
+        vehicleService.deleteVehicleById(id);
+        return "redirect:/management";
     }
 
     @GetMapping("/management/updateVehicle")

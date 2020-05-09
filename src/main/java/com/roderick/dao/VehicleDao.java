@@ -15,4 +15,6 @@ public interface VehicleDao {
     Vehicle getVehicleById(int id);
 
     void insertVehicle(Vehicle vehicle);
+
+    void deleteVehicleById(int id);
 }

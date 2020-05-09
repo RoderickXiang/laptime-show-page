@@ -7,20 +7,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class VehicleService {
-    VehicleDao vehicleDao;
 
-    @Autowired
-    public void setVehicleDao(VehicleDao vehicleDao) {
-        this.vehicleDao = vehicleDao;
-    }
+public interface VehicleService {
 
-    public List<Vehicle> listVehicle() {
-        return vehicleDao.listVehicleByOrder();
-    }
+    void setVehicleDao(VehicleDao vehicleDao);
 
-    public Vehicle getVehicleById() {
-        return null;
-    }
+    List<Vehicle> listVehicle();
+
+    Vehicle getVehicleById(int id);
+
+    void deleteVehicleById(int id);
 }

@@ -13,8 +13,11 @@
         select * from vehicle where id=#{id}
     </select>
     <insert id="insertVehicle" parameterType="com.roderick.pojo.Vehicle">
-        insert  into vehicle (model_name,lap_time,introduction)
+        insert into vehicle (model_name,lap_time,introduction)
         value (#{model_name},#{lap_time},#{introduction})
     </insert>
+    <delete id="deleteVehicleById" parameterType="int">
+        delete from vehicle where id=#{id}
+    </delete>
 
 </mapper>

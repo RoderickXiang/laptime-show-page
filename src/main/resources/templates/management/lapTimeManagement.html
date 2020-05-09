@@ -64,9 +64,6 @@
         <th th:text="${vehicle.getLap_time_str()}"></th>
         <th>
             <a type="button" class="btn btn-primary btn-sm" th:href="@{/management/updateVehicle}">修改</a>
-            <!--<a type="button" id="deleteVehicle" class="btn btn-primary btn-sm"
-               th:href="@{/management/deleteVehicle(${vehicle.getId()})}"
-               onclick="deleteVehicle(this)">删除</a>-->
             <a type="button" class="btn btn-primary btn-sm"
                th:onclick="'deleteVehicle('+${vehicle.getId()}+')'">删除</a>
         </th>
