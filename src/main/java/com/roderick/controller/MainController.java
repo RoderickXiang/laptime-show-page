@@ -32,12 +32,13 @@ public class MainController {
     }
 
     /**
-     * 获取详细的信息
+     * 获取车辆的详细的信息
      * @param id 车辆id
      */
     @GetMapping("/modelInfo")
-    public String modelInfo(@RequestParam("id") int id) {
+    public String modelInfo(@RequestParam("id") int id,Model model) {
         System.out.println(id);
+        // todo 获取图片和评论
         return "vehicle/modelInfo";
     }
 }

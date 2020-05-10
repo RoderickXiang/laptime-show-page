@@ -1,4 +1,3 @@
-
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/laptime_page?serverTimezone=Asia/Shanghai
@@ -7,6 +6,16 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   thymeleaf:
     cache: false
+  servlet:
+    multipart:
+      enabled: true
+      #文件的允许的大小20MB
+      max-file-size: 20MB
+      max-request-size: 20MB
 mybatis:
   type-aliases-package: com.roderick.pojo
   mapper-locations: classpath:mybatis/projectMapper.xml
+
+file:
+  uploadFolder: F:\学习\上吊教程\Project\圈速展示\src\main\resources\static\images\vehicle
+debug: true

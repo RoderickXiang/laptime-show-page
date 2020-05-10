@@ -21,6 +21,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/authentication/form")
                 .successForwardUrl("/management/mainPage")
                 .defaultSuccessUrl("/");
+        http.csrf().disable();  //解除对于post请求的拦截，不然文件上传玩不了
     }
 
     @Bean

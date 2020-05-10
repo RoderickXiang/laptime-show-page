@@ -4,16 +4,18 @@ import com.roderick.dao.VehicleDao;
 import com.roderick.pojo.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 
 public interface VehicleService {
 
-    void setVehicleDao(VehicleDao vehicleDao);
-
     /**
      * 按照圈速时间顺序返回结果
+     *
      * @return 车辆列表
      */
     List<Vehicle> listVehicle();
@@ -21,4 +23,6 @@ public interface VehicleService {
     Vehicle getVehicleById(int id);
 
     void deleteVehicleById(int id);
+
+    void addVehicleImage(MultipartFile file, HttpServletRequest request) throws IOException;
 }

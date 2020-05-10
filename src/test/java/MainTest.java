@@ -4,8 +4,6 @@ import com.roderick.pojo.Vehicle;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import javax.sql.DataSource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,10 +35,5 @@ public class MainTest {
         vehicle.setLap_time(parse);
         vehicle.setIntroduction("推头王");
         vehicleDao.insertVehicle(vehicle);
-    }
-
-    @Test
-    public void bc(){
-        System.out.println(new BCryptPasswordEncoder().encode("admin"));
     }
 }
