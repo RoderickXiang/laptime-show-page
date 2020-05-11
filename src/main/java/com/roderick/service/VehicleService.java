@@ -1,9 +1,6 @@
 package com.roderick.service;
 
-import com.roderick.dao.VehicleDao;
 import com.roderick.pojo.Vehicle;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,9 +24,18 @@ public interface VehicleService {
     /**
      * 添加车辆图片
      *
-     * @param file 文件上传对象
+     * @param file 文件储存对象
+     * @return imageName 车辆图片文件的名字
      */
-    void addVehicleImage(MultipartFile file, HttpServletRequest request) throws IOException;
+    String addVehicleImage(MultipartFile file) throws IOException;
 
-    void insertVehicle(Vehicle vehicle);
+    int insertVehicle(Vehicle vehicle);
+
+    /**
+     * 添加车辆和车辆图片以及在数据库中记录图片的名称
+     *
+     * @param vehicle 新的车辆实体类
+     * @param file 文件储存对象
+     */
+    void insertVehicle(Vehicle vehicle, MultipartFile file) throws IOException;
 }

@@ -1,5 +1,6 @@
 package com.roderick.service.Impl;
 
+import com.roderick.dao.ImageDao;
 import com.roderick.dao.VehicleDao;
 import com.roderick.pojo.Vehicle;
 import com.roderick.service.VehicleService;
@@ -20,6 +21,7 @@ import java.util.UUID;
 @Service
 public class VehicleServiceImpl implements VehicleService {
     VehicleDao vehicleDao;
+    ImageDao imageDao;
 
     @Value("${file.uploadFolder}")
     private String uploadFolder;    //车辆图片存放的位置
@@ -27,6 +29,11 @@ public class VehicleServiceImpl implements VehicleService {
     @Autowired
     public void setVehicleDao(VehicleDao vehicleDao) {
         this.vehicleDao = vehicleDao;
+    }
+
+    @Autowired
+    public void setImageDao(ImageDao imageDao) {
+        this.imageDao = imageDao;
     }
 
     @Override
@@ -45,7 +52,7 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public void addVehicleImage(MultipartFile file, HttpServletRequest request) throws IOException {
+    public String addVehicleImage(MultipartFile file) throws IOException {
         File realPath = new File(uploadFolder); //就怕没有目录
         if (!realPath.exists()) {
             boolean mkdir = realPath.mkdir();
@@ -60,13 +67,14 @@ public class VehicleServiceImpl implements VehicleService {
         //通过UUID防止文件名重复
         String fileName = UUID.randomUUID().toString() + fileSuffix;
         file.transferTo(new File(uploadFolder + "/" + fileName));
+        return fileName;
     }
 
     @Override
-    public void insertVehicle(Vehicle vehicle) {
+    public int insertVehicle(Vehicle vehicle) {
         String lap_time_str = vehicle.getLap_time_str();
         Date lap_time = null;
-        if (lap_time_str != null) {
+        if (lap_time_str != null) { //时间转换
             try {
                 lap_time = new SimpleDateFormat("mm:ss.SSS").parse(lap_time_str);
             } catch (ParseException e) {
@@ -74,7 +82,16 @@ public class VehicleServiceImpl implements VehicleService {
             }
         }
         vehicle.setLap_time(lap_time);
-        System.out.println(vehicle);
         vehicleDao.insertVehicle(vehicle);
+        return vehicle.getId();
     }
+
+    @Override
+    public void insertVehicle(Vehicle vehicle, MultipartFile file) throws IOException {
+        int vehicleId = this.insertVehicle(vehicle);
+        System.out.println(vehicleId);
+        String imageName = this.addVehicleImage(file); //返回文件的名字（UUID）
+        imageDao.insertImage(vehicleId, imageName); //添加文件名到数据库
+    }
+
 }

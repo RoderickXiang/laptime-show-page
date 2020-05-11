@@ -1,9 +1,11 @@
 import com.roderick.StartApplication;
+import com.roderick.dao.ImageDao;
 import com.roderick.dao.VehicleDao;
 import com.roderick.pojo.Vehicle;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import javax.sql.DataSource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,16 +17,18 @@ public class MainTest {
     @Autowired
     VehicleDao vehicleDao;
     @Autowired
+    ImageDao imageDao;
+    @Autowired
     DataSource dataSource;
 
     @Test
-    public void daoTest() {
-        /*List<Vehicle> vehicles = vehicleDao.listVehicle();
-        for (Vehicle vehicle : vehicles) {
-            System.out.println(vehicle);
-        }*/
-        Vehicle vehicle = vehicleDao.getVehicleById(6);
-        System.out.println(vehicle.getLap_time_str());
+    public void daoTest() throws ParseException {
+        /*Vehicle vehicle = new Vehicle();
+        vehicle.setModel_name("Id测试");
+        Date parse = new SimpleDateFormat("mm:ss.SSS").parse("06:39.231");
+        vehicle.setLap_time(parse);
+        vehicleDao.insertVehicle(vehicle);*/
+        imageDao.insertImage(43, "test");
     }
 
     @Test

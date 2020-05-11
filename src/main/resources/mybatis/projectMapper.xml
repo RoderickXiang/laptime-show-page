@@ -12,7 +12,7 @@
     <select id="getVehicleById" parameterType="int" resultType="com.roderick.pojo.Vehicle">
         select * from vehicle where id=#{id}
     </select>
-    <insert id="insertVehicle" parameterType="com.roderick.pojo.Vehicle">
+    <insert id="insertVehicle" parameterType="com.roderick.pojo.Vehicle" useGeneratedKeys="true" keyProperty="id">
         insert into vehicle (model_name,lap_time,introduction)
         value (#{model_name},#{lap_time},#{introduction})
     </insert>

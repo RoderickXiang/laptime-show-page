@@ -20,8 +20,6 @@ import java.util.Map;
 @Controller
 public class ManagementController {
     VehicleService vehicleService;
-    @Value("${file.uploadFolder}")
-    private String uploadFolder;
 
     @Autowired
     public void setVehicleService(VehicleService vehicleService) {
@@ -56,15 +54,14 @@ public class ManagementController {
      */
     @PostMapping("/management/insertVehicle")
     @ResponseBody
-    public String insertVehicle(Vehicle vehicle) {
-        vehicleService.insertVehicle(vehicle);
-        // todo 可能要去返回json数据
+    public String insertVehicle(Vehicle vehicle, @RequestParam("file") MultipartFile file) throws IOException {
+        vehicleService.insertVehicle(vehicle, file);
         return null;
     }
 
     @GetMapping("/management/deleteVehicle")
     public String deleteVehicle(@RequestParam int id) {
-        // todo 删除
+        // todo 图片从数据空中清除，删除文件删除
         vehicleService.deleteVehicleById(id);
         return "redirect:/management";
     }
@@ -77,8 +74,8 @@ public class ManagementController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public String test(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
-        vehicleService.addVehicleImage(file, request);
+    public String test(@RequestParam("file") MultipartFile file) throws IOException {
+        vehicleService.addVehicleImage(file);
         return "ok";
     }
 }
