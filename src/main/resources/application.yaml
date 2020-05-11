@@ -15,7 +15,7 @@ spring:
 mybatis:
   type-aliases-package: com.roderick.pojo
   mapper-locations: classpath:mybatis/projectMapper.xml
-
+#外部访问的文件上传位置
 file:
   uploadFolder: F:\学习\上吊教程\Project\圈速展示\src\main\resources\static\images\vehicle
 debug: true
