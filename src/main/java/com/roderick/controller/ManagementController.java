@@ -47,9 +47,19 @@ public class ManagementController {
     }
 
     @GetMapping("/management/insertVehicle")
-    public String insertVehicle(Model model) {
-        // todo 添加
+    public String insertVehiclePage() {
         return "management/insertVehicle";
+    }
+
+    /**
+     * 添加车辆表单提交
+     */
+    @PostMapping("/management/insertVehicle")
+    @ResponseBody
+    public String insertVehicle(Vehicle vehicle) {
+        vehicleService.insertVehicle(vehicle);
+        // todo 可能要去返回json数据
+        return null;
     }
 
     @GetMapping("/management/deleteVehicle")

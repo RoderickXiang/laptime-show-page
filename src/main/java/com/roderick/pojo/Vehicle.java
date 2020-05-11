@@ -1,5 +1,6 @@
 package com.roderick.pojo;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -36,7 +37,9 @@ public class Vehicle {
     }
 
     public String getLap_time_str() {
-        lap_time_str = new SimpleDateFormat("mm:ss.SSS").format(lap_time);
+        if (lap_time != null) {
+            lap_time_str = new SimpleDateFormat("mm:ss.SSS").format(lap_time);
+        }
         return lap_time_str;
     }
 

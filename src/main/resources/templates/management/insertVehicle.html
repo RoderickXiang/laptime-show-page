@@ -23,16 +23,17 @@
     <img src="/favicon.ico" alt="..." class="img-responsive" style="width: 400px;height: auto;max-height: 280px">
 </div>
 <!--填入数据-->
-<form class="col-md-4 col-md-offset-2" style="margin-top: 20px">
+<form class="col-md-4 col-md-offset-2" style="margin-top: 20px" action="/management/insertVehicle" method="post"
+      enctype="multipart/form-data">
     <!--车型-->
     <div class="form-group insertFrom">
         <label for="modelName">车辆名称</label>
-        <input type="text" name="modelName" class="form-control" id="modelName" placeholder="型号">
+        <input type="text" name="model_name" class="form-control" id="modelName" placeholder="型号">
     </div>
     <!--圈速-->
     <div class="form-group insertFrom">
         <label for="lapTime">圈速</label>
-        <input type="text" name="lapTime" class="form-control" id="lapTime" placeholder="圈速成绩">
+        <input type="text" name="lap_time_str" class="form-control" id="lapTime" placeholder="圈速成绩,请使用mm:ss.SSS格式，不然会炸">
     </div>
     <!--车辆介绍-->
     <div class="form-group insertFrom">

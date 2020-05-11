@@ -24,5 +24,12 @@ public interface VehicleService {
 
     void deleteVehicleById(int id);
 
+    /**
+     * 添加车辆图片
+     *
+     * @param file 文件上传对象
+     */
     void addVehicleImage(MultipartFile file, HttpServletRequest request) throws IOException;
+
+    void insertVehicle(Vehicle vehicle);
 }

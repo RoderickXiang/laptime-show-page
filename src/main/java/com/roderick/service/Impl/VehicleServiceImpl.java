@@ -11,6 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,7 +22,7 @@ public class VehicleServiceImpl implements VehicleService {
     VehicleDao vehicleDao;
 
     @Value("${file.uploadFolder}")
-    private String uploadFolder;
+    private String uploadFolder;    //车辆图片存放的位置
 
     @Autowired
     public void setVehicleDao(VehicleDao vehicleDao) {
@@ -57,5 +60,21 @@ public class VehicleServiceImpl implements VehicleService {
         //通过UUID防止文件名重复
         String fileName = UUID.randomUUID().toString() + fileSuffix;
         file.transferTo(new File(uploadFolder + "/" + fileName));
+    }
+
+    @Override
+    public void insertVehicle(Vehicle vehicle) {
+        String lap_time_str = vehicle.getLap_time_str();
+        Date lap_time = null;
+        if (lap_time_str != null) {
+            try {
+                lap_time = new SimpleDateFormat("mm:ss.SSS").parse(lap_time_str);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        vehicle.setLap_time(lap_time);
+        System.out.println(vehicle);
+        vehicleDao.insertVehicle(vehicle);
     }
 }
