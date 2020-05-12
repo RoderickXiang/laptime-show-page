@@ -7,4 +7,10 @@
         insert into image (vehicle_id,image_path)
         value (#{vehicle_id},#{image_path})
     </insert>
+    <select id="getImagePathByVehicleId" resultType="java.lang.String">
+        select image_path from image where vehicle_id=#{vehicle_id}
+    </select>
+    <delete id="deleteImageByVehicleId">
+        delete from image where vehicle_id=#{vehicle_id}
+    </delete>
 </mapper>

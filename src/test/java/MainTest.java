@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootTest(classes = StartApplication.class)
 public class MainTest {
@@ -28,7 +28,8 @@ public class MainTest {
         Date parse = new SimpleDateFormat("mm:ss.SSS").parse("06:39.231");
         vehicle.setLap_time(parse);
         vehicleDao.insertVehicle(vehicle);*/
-        imageDao.insertImage(43, "test");
+        File file = new File("F:\\学习\\上吊教程\\Project\\圈速展示\\src\\main\\resources\\static\\images\\vehicle\\" + "0cf6812a-78db-436f-a11e-7812f1d88a15.png");
+        System.out.println(file.exists());
     }
 
     @Test

@@ -3,25 +3,24 @@ package com.roderick.service.Impl;
 import com.roderick.dao.ImageDao;
 import com.roderick.dao.VehicleDao;
 import com.roderick.pojo.Vehicle;
+import com.roderick.service.ImageService;
 import com.roderick.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
     VehicleDao vehicleDao;
     ImageDao imageDao;
+    ImageService imageService;
 
     @Value("${file.uploadFolder}")
     private String uploadFolder;    //车辆图片存放的位置
@@ -36,6 +35,11 @@ public class VehicleServiceImpl implements VehicleService {
         this.imageDao = imageDao;
     }
 
+    @Autowired
+    public void setImageService(ImageService imageService) {
+        this.imageService = imageService;
+    }
+
     @Override
     public List<Vehicle> listVehicle() {
         return vehicleDao.listVehicleByOrder();
@@ -47,27 +51,9 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public void deleteVehicleById(int id) {
+    public void deleteVehicleById(int id) throws IOException {
+        imageService.deleteImageByVehicleId(id);
         vehicleDao.deleteVehicleById(id);
-    }
-
-    @Override
-    public String addVehicleImage(MultipartFile file) throws IOException {
-        File realPath = new File(uploadFolder); //就怕没有目录
-        if (!realPath.exists()) {
-            boolean mkdir = realPath.mkdir();
-        }
-        String originalFilename = file.getOriginalFilename();
-        String fileSuffix = null;
-        //获取后缀
-        if (originalFilename != null && !"".equals(originalFilename)) {
-            fileSuffix = originalFilename.substring(originalFilename.lastIndexOf(".")); //"."也是要的
-        }
-
-        //通过UUID防止文件名重复
-        String fileName = UUID.randomUUID().toString() + fileSuffix;
-        file.transferTo(new File(uploadFolder + "/" + fileName));
-        return fileName;
     }
 
     @Override
@@ -89,8 +75,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public void insertVehicle(Vehicle vehicle, MultipartFile file) throws IOException {
         int vehicleId = this.insertVehicle(vehicle);
-        System.out.println(vehicleId);
-        String imageName = this.addVehicleImage(file); //返回文件的名字（UUID）
+        String imageName = imageService.addVehicleImage(file); //返回文件的名字（UUID）
         imageDao.insertImage(vehicleId, imageName); //添加文件名到数据库
     }
 

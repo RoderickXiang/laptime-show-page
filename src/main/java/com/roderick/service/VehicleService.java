@@ -19,23 +19,23 @@ public interface VehicleService {
 
     Vehicle getVehicleById(int id);
 
-    void deleteVehicleById(int id);
+    /**
+     * 删除车辆数据和图片
+     */
+    void deleteVehicleById(int id) throws IOException;
 
     /**
-     * 添加车辆图片
+     * 添加车辆
      *
-     * @param file 文件储存对象
-     * @return imageName 车辆图片文件的名字
+     * @return 在数据库中自增生成的id
      */
-    String addVehicleImage(MultipartFile file) throws IOException;
-
     int insertVehicle(Vehicle vehicle);
 
     /**
      * 添加车辆和车辆图片以及在数据库中记录图片的名称
      *
      * @param vehicle 新的车辆实体类
-     * @param file 文件储存对象
+     * @param file    文件储存对象
      */
     void insertVehicle(Vehicle vehicle, MultipartFile file) throws IOException;
 }
