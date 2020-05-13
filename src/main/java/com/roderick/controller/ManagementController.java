@@ -61,7 +61,6 @@ public class ManagementController {
 
     @GetMapping("/management/deleteVehicle")
     public String deleteVehicle(@RequestParam int id) throws IOException {
-        // todo 图片从数据空中清除，删除文件删除
         vehicleService.deleteVehicleById(id);
         return "redirect:/management";
     }
