@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/laptime_page?serverTimezone=Asia/Shanghai
-    username: root
-    password: admin
+    username: ENC(IH4K3tdU07INhJWVmcwjP4DTSpgplELYJ9Vs8lLYl/5d9Vswx9gnbCiAZPZfFzlz)
+    password: ENC(e4BWuYJiWy3KHm/+68hD6OkKLzfQCbNIaZ9aR/oOy09c1FvF0Z5W7KqvTp87C+p4)
     driver-class-name: com.mysql.cj.jdbc.Driver
   thymeleaf:
     cache: false
@@ -18,4 +18,14 @@ mybatis:
 #外部访问的文件上传位置
 file:
   uploadFolder: F:\学习\上吊教程\Project\圈速展示\src\main\resources\static\images\vehicle
+  tempUploadFolder: F:\学习\上吊教程\Project\圈速展示\src\main\resources\static\images\temp
+baidu:
+  APP_ID: ENC(deBZo91FX4lm10rc4WvA6ghh7fBL+OxcV19lNUvZ+NA0ODhhJ519ttQb7puhXZfM)
+  API_KEY: ENC(g5/opWgIH46RsaBc3VZ7g8YfKR9DjYKGa16OWbRio0g7r2IPXNETOQ0rflT7DsKW3wLShL1fUoOVNQWVyLOHDQ==)
+  SECRET_KEY: ENC(WITcu6UuVcWXnca/DOcwTipVM/7stVAkZZWzkdsqudxjI4psmukSWdmcr1yzUcvcJT935Q/JMYbcuu8m3KyfLhDENDZ2JiuXM5iJ0CNezsY=)
+jasypt:
+  encryptor:
+    password: Roderick  # 明文密码接管
+
+
 debug: true

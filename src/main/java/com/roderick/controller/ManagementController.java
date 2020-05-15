@@ -1,6 +1,8 @@
 package com.roderick.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.roderick.pojo.Vehicle;
+import com.roderick.service.ImageService;
 import com.roderick.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,10 +22,16 @@ import java.util.Map;
 @Controller
 public class ManagementController {
     VehicleService vehicleService;
+    ImageService imageService;
 
     @Autowired
     public void setVehicleService(VehicleService vehicleService) {
         this.vehicleService = vehicleService;
+    }
+
+    @Autowired
+    public void setImageService(ImageService imageService) {
+        this.imageService = imageService;
     }
 
     @GetMapping({"/authentication/login", "/authentication"})
@@ -71,9 +79,16 @@ public class ManagementController {
         return "management/updateVehicle";
     }
 
-    @RequestMapping("/upload")
+    @GetMapping("/management/vehicleIdentification")
+    public String vehicleIdentificationPage() {
+        return "management/vehicleIdentification";
+    }
+
+    @PostMapping("/management/vehicleIdentification")
     @ResponseBody
-    public String test(@RequestParam("file") MultipartFile file) throws IOException {
-        return "ok";
+    public String vehicleIdentification(@RequestParam("file") MultipartFile file) throws IOException {
+        System.out.println(file.getOriginalFilename());
+        String imagePath = imageService.addTempVehicleImage(file);  //临时存储的文件
+        return imageService.vehicleIdentification(imagePath);
     }
 }

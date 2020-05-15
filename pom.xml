@@ -46,6 +46,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--加密组件-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>3.0.2</version>
+        </dependency>
 
         <!--模板引擎-->
         <dependency>
@@ -68,6 +74,15 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+
+        <!--百度图像识别-->
+        <dependency>
+            <groupId>com.baidu.aip</groupId>
+            <artifactId>java-sdk</artifactId>
+            <version>4.12.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

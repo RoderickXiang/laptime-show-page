@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>车辆识别</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery-3.5.1.js"></script>
+    <script>
+        $(function () {
+            $("#submit-btn").click(function () {
+                $.ajax({
+                    url: "/management/vehicleIdentification",
+                    data: new FormData($('#uploadForm')[0]),
+                    type: "POST",
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $("#submit-btn").attr("class", "btn btn-success");  //设置属性
+                        let results = data.result;
+                        $("#resultForm").html("");  //清空表格
+                        for (const result of results) {
+                            renderForm(result);
+                        }
+                    },
+                    error: function () {
+                        $("#submit-btn").attr("class", "btn btn-danger");
+                    },
+                    dataType: "json"
+                })
+            });
+        });
+
+        function renderForm(result) {
+            $("#resultForm").append(
+                "        <tr>\n" +
+                "            <td>" + result.name + "</td>\n" +
+                "            <td>" + result.score + "</td>\n" +
+                "            <td>" + result.year + "</td>\n" +
+                "        </tr>"
+            )
+        }
+    </script>
+</head>
+
+<body>
+<!--导航栏-->
+<div th:replace="~{commons/header::navbar(pageName='vehicleIdentification')}"></div>
+<div class="col-md-6">
+    <img src="/favicon.ico" alt="车辆图片">
+</div>
+<!--识别结果-->
+<div class="col-md-6">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>置信度</th>
+            <th>年份</th>
+        </tr>
+        </thead>
+        <tbody id="resultForm">
+        <tr>
+            <td>非车类</td>
+            <td>1</td>
+            <td>无年份信息</td>
+        </tr>
+        <tr>
+            <td>非车类</td>
+            <td>
+                1
+            </td>
+            <td>
+                无年份信息
+            </td>
+
+        </tr>
+        <tr>
+            <td>非车类</td>
+            <td>
+                1
+            </td>
+            <td>
+                无年份信息
+            </td>
+
+        </tr>
+        <tr>
+            <td>非车类</td>
+            <td>
+                1
+            </td>
+            <td>
+                无年份信息
+            </td>
+
+        </tr>
+        <tr>
+            <td>非车类</td>
+            <td>
+                1
+            </td>
+            <td>
+                无年份信息
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-md-offset-6">
+    <form id="uploadForm" method="post" enctype="multipart/form-data">
+        <div class="form-group insertFrom">
+            <label for="file">上传图片</label>
+            <input type="file" name="file" id="file">
+        </div>
+        <button id="submit-btn" class="btn btn-primary" type="button">提交</button>
+    </form>
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="/js/jquery-3.5.1.js"></script>-->
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
