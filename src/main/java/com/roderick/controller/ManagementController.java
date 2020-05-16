@@ -61,10 +61,9 @@ public class ManagementController {
      * 添加车辆表单提交
      */
     @PostMapping("/management/insertVehicle")
-    @ResponseBody
     public String insertVehicle(Vehicle vehicle, @RequestParam("file") MultipartFile file) throws IOException {
         vehicleService.insertVehicle(vehicle, file);
-        return null;
+        return "redirect:/management";  //重定向请求而不是静态资源
     }
 
     @GetMapping("/management/deleteVehicle")
@@ -87,7 +86,6 @@ public class ManagementController {
     @PostMapping("/management/vehicleIdentification")
     @ResponseBody
     public String vehicleIdentification(@RequestParam("file") MultipartFile file) throws IOException {
-        System.out.println(file.getOriginalFilename());
         String imagePath = imageService.addTempVehicleImage(file);  //临时存储的文件
         return imageService.vehicleIdentification(imagePath);
     }

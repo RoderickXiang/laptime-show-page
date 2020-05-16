@@ -62,7 +62,6 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public void deleteImageByVehicleId(int id) throws IOException {
         String imagePath = imageDao.getImagePathByVehicleId(id);    //获取图片名称包含图片格式
-        System.out.println(imagePath);
         if (imagePath != null) {
             File file = new File(uploadFolder + "/" + imagePath);
             if (file.exists()) { //删除图片
@@ -93,7 +92,6 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public String vehicleIdentification(String imagePath) {
         imagePath = tempUploadFolder + "\\" + imagePath;
-        System.out.println(imagePath);
         String result_json = vehicleIdentification.identification(imagePath);
         this.deleteTempImage(tempUploadFolder);
         return result_json;

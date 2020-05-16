@@ -16,6 +16,9 @@
     <script>
         $(function () {
             $("#submit-btn").click(function () {
+                let $file = $("#file");    //C:\fakepath\M4 M.png
+                let src = getObjectURL($file[0].files[0]);  //转化为DOM对象后，获取文件（jQuery无法进行操作）
+                $("#image").attr("src", src);
                 $.ajax({
                     url: "/management/vehicleIdentification",
                     data: new FormData($('#uploadForm')[0]),
@@ -34,7 +37,7 @@
                         $("#submit-btn").attr("class", "btn btn-danger");
                     },
                     dataType: "json"
-                })
+                });
             });
         });
 
@@ -47,6 +50,19 @@
                 "        </tr>"
             )
         }
+
+        function getObjectURL(file) {   //获取上传图片的地址生成零时文件（名称为uuid）
+            let url = null;
+            if (window.createObjectURL !== undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL !== undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file)
+            } else if (window.webkitURL !== undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+
+        }
     </script>
 </head>
 
@@ -54,7 +70,7 @@
 <!--导航栏-->
 <div th:replace="~{commons/header::navbar(pageName='vehicleIdentification')}"></div>
 <div class="col-md-6">
-    <img src="/favicon.ico" alt="车辆图片">
+    <img id="image" style="width: 500px;height: auto;max-height: 700px;">
 </div>
 <!--识别结果-->
 <div class="col-md-6">
