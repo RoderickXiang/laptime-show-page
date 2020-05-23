@@ -43,7 +43,7 @@
         <th><a th:text="${vehicle.getModel_name()}" th:href="@{/modelInfo(id=${vehicle.getId()})}"></a></th>
         <th th:text="${vehicle.getLap_time_str()}"></th>
         <th>
-            <a type="button" class="btn btn-primary btn-sm" th:href="@{/management/updateVehicle}">修改</a>
+            <a type="button" class="btn btn-primary btn-sm" th:href="@{/management/updateVehicle(id=${vehicle.getId()})}">修改</a>
             <a type="button" class="btn btn-danger btn-sm"
                th:onclick="'deleteVehicle('+${vehicle.getId()}+')'">删除</a>
         </th>

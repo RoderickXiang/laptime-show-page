@@ -72,10 +72,29 @@ public class ManagementController {
         return "redirect:/management";
     }
 
+    /**
+     * 跳转修改页面（回显原数据库中的信息）
+     *
+     * @param id 前台传入的需要修改的id
+     * @return 修改页面
+     */
     @GetMapping("/management/updateVehicle")
-    public String updateVehicle(Model model) {
-        // todo 修改
+    public String updateVehiclePage(int id, Model model) {
+        Vehicle vehicle = vehicleService.getVehicleById(id);
+        model.addAttribute("vehicle", vehicle);
         return "management/updateVehicle";
+    }
+
+    /**
+     * 接收修改完的表单，在数据库中进行修改
+     *
+     * @param vehicle 包含id的车辆对象
+     * @return 重定向到管理主页
+     */
+    @PostMapping("/management/updateVehicle")
+    public String updateVehicle(Vehicle vehicle) {
+        vehicleService.updateVehicle(vehicle);
+        return "redirect:/management";
     }
 
     @GetMapping("/management/vehicleIdentification")

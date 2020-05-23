@@ -38,4 +38,10 @@ public interface VehicleService {
      * @param file    文件储存对象
      */
     void insertVehicle(Vehicle vehicle, MultipartFile file) throws IOException;
+
+    /**
+     * 修改车辆在数据库中的信息
+     * @param vehicle 包含id的车辆对象
+     */
+    void updateVehicle(Vehicle vehicle);
 }

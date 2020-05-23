@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>修改信息</title>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery-3.5.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#return-btn").click(function () {
+                history.go(-1);
+            });
+        });
+    </script>
 </head>
 <body>
-
+<form id="insertForm" class="col-md-4 col-md-offset-4" style="margin-top: 20px;" th:action="@{/management/updateVehicle}"
+      method="post">
+    <input type="hidden" name="id" th:value="${vehicle.getId()}">
+    <!--车型-->
+    <div class="form-group insertFrom">
+        <label for="modelName">车辆名称</label>
+        <input type="text" name="model_name" class="form-control" id="modelName" placeholder="型号"
+               th:value="${vehicle.getModel_name()}">
+    </div>
+    <!--圈速-->
+    <div class="form-group insertFrom">
+        <label for="lapTime">圈速</label>
+        <input type="text" name="lap_time_str" class="form-control" id="lapTime" placeholder="圈速成绩,请使用mm:ss.SSS格式，不然会炸"
+               th:value="${vehicle.getLap_time_str()}">
+    </div>
+    <!--车辆介绍-->
+    <div class="form-group insertFrom">
+        <label for="introduction">车辆介绍</label>
+        <input type="text" name="introduction" class="form-control" id="introduction" placeholder="车辆简介"
+               th:value="${vehicle.getIntroduction()}"
+               style="height: 100px;">
+    </div>
+    <button type="submit" class="btn btn-primary">修改</button>
+    <button type="button" id="return-btn" class="btn btn-default">返回</button>
+</form>
 </body>
 </html>

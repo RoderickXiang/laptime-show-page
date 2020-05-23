@@ -34,11 +34,9 @@ public class MainTest {
     @Test
     public void insertTest() throws ParseException {
         Vehicle vehicle = new Vehicle();
-        vehicle.setModel_name("audi rs6");
-        Date parse = new SimpleDateFormat("mm:ss.SSS").parse("6:39.231");
-        vehicle.setLap_time(parse);
-        vehicle.setIntroduction("推头王");
-        vehicleDao.insertVehicle(vehicle);
+        vehicle.setId(11);
+        vehicle.setModel_name("修改测试2");
+        vehicleDao.updateVehicle(vehicle);
     }
 
     @Test

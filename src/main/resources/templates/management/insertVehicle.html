@@ -30,8 +30,8 @@
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                        //todo 回显车辆数据
-                        $("#submit-btn").attr("class", "btn btn-success");  //设置属性
+                        $("#modelName").attr("value", data.result[0].name);
+                        $("#submit-btn").attr("class", "btn btn-success");  //设置按钮属性
                         let results = data.result;
                         $("#resultForm").html("");  //清空表格
                         for (const result of results) {
@@ -46,6 +46,7 @@
             });
         });
 
+        //显示表格
         function renderForm(result) {
             $("#resultForm").append(
                 "        <tr>\n" +
@@ -75,10 +76,12 @@
 <div th:replace="~{commons/header::navbar(pageName='insertVehicle')}"></div>
 
 <div class="col-md-4">
-    <img id="image" src="/favicon.ico" alt="图片" class="img-responsive" style="width: 400px;height: auto;max-height: 280px;">
+    <img id="image" src="/favicon.ico" alt="图片" class="img-responsive"
+         style="width: 400px;height: auto;max-height: 280px;">
 </div>
 <!--填入数据-->
-<form id="insertForm" class="col-md-4 col-md-offset-2" style="margin-top: 20px;" action="/management/insertVehicle" method="post"
+<form id="insertForm" class="col-md-4 col-md-offset-2" style="margin-top: 20px;" action="/management/insertVehicle"
+      method="post"
       enctype="multipart/form-data">
     <!--车型-->
     <div class="form-group insertFrom">

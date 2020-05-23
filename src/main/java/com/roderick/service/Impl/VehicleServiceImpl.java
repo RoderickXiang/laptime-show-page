@@ -60,7 +60,7 @@ public class VehicleServiceImpl implements VehicleService {
     public int insertVehicle(Vehicle vehicle) {
         String lap_time_str = vehicle.getLap_time_str();
         Date lap_time = null;
-        if (lap_time_str != null) { //时间转换
+        if (lap_time_str != null && !"".equals(lap_time_str)) { //时间转换
             try {
                 lap_time = new SimpleDateFormat("mm:ss.SSS").parse(lap_time_str);
             } catch (ParseException e) {
@@ -79,4 +79,18 @@ public class VehicleServiceImpl implements VehicleService {
         imageDao.insertImage(vehicleId, imageName); //添加文件名到数据库
     }
 
+    @Override
+    public void updateVehicle(Vehicle vehicle) {
+        String lap_time_str = vehicle.getLap_time_str();
+        Date lap_time = null;
+        if (lap_time_str != null && !"".equals(lap_time_str)) { //时间转换
+            try {
+                lap_time = new SimpleDateFormat("mm:ss.SSS").parse(lap_time_str);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        vehicle.setLap_time(lap_time);
+        vehicleDao.updateVehicle(vehicle);
+    }
 }

@@ -19,6 +19,10 @@ public class MainController {
         this.vehicleService = vehicleService;
     }
 
+    /**
+     * 主界面
+     * @return 返回主界面
+     */
     @GetMapping({"/", "/index", "index.html"})
     public String infoPage() {
         return "index";
