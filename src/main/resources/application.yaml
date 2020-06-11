@@ -17,8 +17,8 @@ mybatis:
   mapper-locations: classpath:mybatis/*.xml
 #外部访问的文件上传位置
 file:
-  uploadFolder: F:\学习\上吊教程\Project\圈速展示\src\main\resources\static\images\vehicle
-  tempUploadFolder: F:\学习\上吊教程\Project\圈速展示\src\main\resources\static\images\temp
+  uploadFolder: F:/学习/上吊教程/Project/圈速展示/src/main/resources/static/images/vehicle/
+  tempUploadFolder: F:/学习/上吊教程/Project/圈速展示/src/main/resources/static/images/temp/
 baidu:
   APP_ID: ENC(deBZo91FX4lm10rc4WvA6ghh7fBL+OxcV19lNUvZ+NA0ODhhJ519ttQb7puhXZfM)
   API_KEY: ENC(g5/opWgIH46RsaBc3VZ7g8YfKR9DjYKGa16OWbRio0g7r2IPXNETOQ0rflT7DsKW3wLShL1fUoOVNQWVyLOHDQ==)
@@ -26,6 +26,5 @@ baidu:
 jasypt:
   encryptor:
     password: Roderick  # 明文密码接管
-
 
 debug: true

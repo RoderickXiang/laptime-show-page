@@ -32,7 +32,7 @@
         <th th:text="${status.count}">名次</th>
         <th><a th:text="${vehicle.getModel_name()}" th:href="@{/modelInfo(id=${vehicle.getId()})}"></a></th>
         <th th:text="${vehicle.getLap_time_str()}"></th>
-        <th class="col-md-4">简介</th>
+        <th class="col-md-4" th:text="${vehicle.getIntroduction()}"></th>
     </tr>
     <tr>
         <th scope="row">1</th>

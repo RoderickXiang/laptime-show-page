@@ -16,6 +16,14 @@ public interface ImageService {
     String addVehicleImage(MultipartFile file) throws IOException;
 
     /**
+     * 通过车辆id获取照片路径
+     *
+     * @param vehicleId 车辆id
+     * @return 图片的位置
+     */
+    String getVehicleImageByVehicleId(int vehicleId);
+
+    /**
      * 删除车辆图片
      *
      * @param vehicleId 车辆id

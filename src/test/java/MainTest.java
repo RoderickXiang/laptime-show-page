@@ -7,13 +7,12 @@ import com.roderick.utils.VehicleIdentification;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
 import java.io.File;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @SpringBootTest(classes = StartApplication.class)
 public class MainTest {
@@ -29,6 +28,8 @@ public class MainTest {
     StringEncryptor stringEncryptor;
     @Autowired
     VehicleIdentification vehicleIdentification;
+    @Value("${file.uploadFolder}")
+    String uploadFolder;
 
 
     @Test
@@ -47,8 +48,12 @@ public class MainTest {
 
     @Test
     public void deleteTest() {
-        File file = new File("F:\\学习\\上吊教程\\Project\\圈速展示\\src\\main\\resources\\static\\images\\temp");
-        System.out.println(file.delete());  //要求递归删除
+        File file = new File("F:/学习/上吊教程/Project/圈速展示/src/main/resources/static/images/vehicle/");
+        System.out.println(file);
     }
 
+    @Test
+    public void imageDaoTest() {
+        System.out.println(uploadFolder);
+    }
 }

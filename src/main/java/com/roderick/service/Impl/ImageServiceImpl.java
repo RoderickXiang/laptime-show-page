@@ -60,6 +60,11 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
+    public String getVehicleImageByVehicleId(int vehicleId) {
+        return imageDao.getImagePathByVehicleId(vehicleId);
+    }
+
+    @Override
     public void deleteImageByVehicleId(int id) throws IOException {
         String imagePath = imageDao.getImagePathByVehicleId(id);    //获取图片名称包含图片格式
         if (imagePath != null) {

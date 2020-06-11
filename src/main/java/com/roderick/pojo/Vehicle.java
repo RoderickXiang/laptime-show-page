@@ -4,6 +4,9 @@ package com.roderick.pojo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 车辆实体对象
+ */
 public class Vehicle {
     private int id;
     private String model_name;
