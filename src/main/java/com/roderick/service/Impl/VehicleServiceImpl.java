@@ -74,7 +74,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public void insertVehicle(Vehicle vehicle, MultipartFile file) throws IOException {
-        int vehicleId = this.insertVehicle(vehicle);
+        int vehicleId = this.insertVehicle(vehicle);    //获取车辆Id
         String imageName = imageService.addVehicleImage(file); //返回文件的名字（UUID）
         imageDao.insertImage(vehicleId, imageName); //添加文件名到数据库
     }

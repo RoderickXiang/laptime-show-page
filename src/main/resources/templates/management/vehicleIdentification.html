@@ -16,7 +16,7 @@
     <script>
         $(function () {
             $("#submit-btn").click(function () {
-                let $file = $("#file");    //C:\fakepath\M4 M.png
+                let $file = $("#file");    //获取表单数据
                 let src = getObjectURL($file[0].files[0]);  //转化为DOM对象后，获取文件（jQuery无法进行操作）
                 $("#image").attr("src", src);
                 $.ajax({
@@ -41,7 +41,7 @@
             });
         });
 
-        function renderForm(result) {
+        function renderForm(result) {   //渲染结果表单
             $("#resultForm").append(
                 "        <tr>\n" +
                 "            <td>" + result.name + "</td>\n" +
@@ -61,7 +61,6 @@
                 url = window.webkitURL.createObjectURL(file);
             }
             return url;
-
         }
     </script>
 </head>

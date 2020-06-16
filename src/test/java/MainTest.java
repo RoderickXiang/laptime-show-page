@@ -30,6 +30,8 @@ public class MainTest {
     VehicleIdentification vehicleIdentification;
     @Value("${file.uploadFolder}")
     String uploadFolder;
+    @Value("${spring.datasource.username}")
+    String dataBaseUsername;
 
 
     @Test
@@ -42,8 +44,9 @@ public class MainTest {
 
     @Test
     public void encryptTest() {
-        String identification = vehicleIdentification.identification("F:\\学习\\上吊教程\\Project\\圈速展示\\src\\main\\resources\\static\\images\\vehicle\\1200px-Festival_automobile_international_2014_-_Alfa_Romeo_4C_-_009.jpg");
-        System.out.println(identification);
+        /*String admin = stringEncryptor.encrypt("admin");    //加密
+        System.out.println(stringEncryptor.decrypt(admin)); //解密*/
+        System.out.println(dataBaseUsername);
     }
 
     @Test

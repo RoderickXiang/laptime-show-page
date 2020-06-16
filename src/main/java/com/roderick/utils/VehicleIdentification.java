@@ -19,11 +19,6 @@ public class VehicleIdentification {
     @Value("${baidu.SECRET_KEY}")
     private String SECRET_KEY;
 
-    public static void main(String[] args) {
-        VehicleIdentification vehicleIdentification = new VehicleIdentification();
-        vehicleIdentification.identification("F:\\学习\\上吊教程\\Project\\圈速展示\\src\\main\\resources\\static\\images\\vehicle\\1200px-Festival_automobile_international_2014_-_Alfa_Romeo_4C_-_009.jpg");
-    }
-
     public String identification(String imagePath) {// 参数为本地路径
         // 初始化一个AipImageClassify
         AipImageClassify client = new AipImageClassify(APP_ID, API_KEY, SECRET_KEY);
